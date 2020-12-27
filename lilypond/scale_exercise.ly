@@ -16,66 +16,85 @@
 % replace with version of lilypond
 \version "2.20.0"
 
-% bella = piano treble clef
-% bella is a variable name, replace with "upper" or anything else
 
 % \relative means each successive note is relative to the previous note
 % such that the interval made with the previous note is no more than 1/5
 % c' is middle c
 
-bella = \relative c' {
+treb-chord-prog = {\chordmode  { c4 g:7^5/b c} r}
+bass-chord-prog = {\chordmode  { c,4 g,:7^5/b c,} r}
 
-            \clef treble
-            \key  c \major
-            \time 4/4
-
-   % song starts here
-   c8\(  d  e  f  g  f   e  d
-   c  d  e  f  g4 c,4 
-
-   \chordmode { c4 g:7^5/b c}\) r
-   
-
-   r1 r1 r1
-
-   c8\(  d  e  f  g  f   e  d
-   c     d  e  f  g4 c,4 
-
-   \chordmode { c4 g:7^5/b c}\) r
- 
+mini-scale = {
+   c8  d  e  f  g  f   e  d  |
+   c   d  e  f  g4     c,    |
 }
 
-% flux = piano bass clef
-% flux is a variable name, replace with "lower" or anything else
+treb-song = {
+   \mini-scale
+   \treb-chord-prog
+}
+
+bass-song = {
+   \mini-scale
+   \bass-chord-prog
+}
+ 
+ 
+bella = {
+   \clef treble
+   \numericTimeSignature \time 4/4
+   \key  c \major
+   
+   \relative c' {
+
+      \treb-song \break
+      \key d \major
+      \transpose c d' { \treb-song } \break
+      \key e \major
+      \transpose c e' { \treb-song } \break
+      \key f \major
+      \transpose c f' { \treb-song } \break
+      \key g \major
+      \transpose c g' { \treb-song } \break
+      \key a \major
+      \transpose c a' { \treb-song } \break
+      \key b \major
+      \transpose c b' { \treb-song } \break
+   }
+}
+
 flux = \relative c {
          
-         \clef bass
-         \key  c \major
-         \time 4/4
+      \clef bass
+      \key  c \major
+      \numericTimeSignature \time 4/4
 
-   % song starts here
-   r1 r1 r1
-
-   c8\(  d  e  f  g  f   e  d
-   c     d  e  f  g4 c,4 
-
-   \chordmode { c,4 g,:7^5/b c,}\) r
-
-   c8\( d  e  f  g  f   e  d
-   c    d  e  f  g4 c,4 
-
-   \chordmode { c,4 g,:7^5/b c,}\) r
-   
-
+      \bass-song \break
+      \key d \major
+      \transpose c d { \bass-song } \break 
+      \key e \major
+      \transpose c e { \bass-song } \break 
+      \key f \major
+      \transpose c f { \bass-song } \break 
+      \key g \major
+      \transpose c g { \bass-song } \break 
+      \key a \major
+      \transpose c a { \bass-song } \break 
+      \key b \major
+      \transpose c b { \bass-song } \break 
 }
 
 
+\header {
+   title = "Mini Scale Exercise"
+   arranger = "Arranged by Rebecca Rashkin"
+}
 
 \score {
   \new PianoStaff <<
-    \set PianoStaff.instrumentName = #"Piano  "
-    \new Staff = "bella" \bella
-    \new Staff = "flux" \flux
+    %\set PianoStaff.instrumentName = #"Piano  "
+    \new Staff = "" \bella
+    \new Staff = "" \flux
   >>
   \layout { }
   \midi { }
