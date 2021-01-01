@@ -30,13 +30,17 @@ mini-scale = {
 }
 
 treb-song = {
-   \mini-scale
-   \treb-chord-prog
+   \relative c' {
+      \mini-scale
+      \treb-chord-prog
+   } 
 }
 
 bass-song = {
+   \relative c {
    \mini-scale
    \bass-chord-prog
+   }
 }
  
  
@@ -45,22 +49,20 @@ bella = {
    \numericTimeSignature \time 4/4
    \key  c \major
    
-   \relative c' {
 
-      \treb-song \break
+      \treb-song
       \key d \major
-      \transpose c d' { \treb-song } \break
+      \transpose c d { \treb-song } \break
       \key e \major
-      \transpose c e' { \treb-song } \break
+      \transpose c e { \treb-song } \break
       \key f \major
-      \transpose c f' { \treb-song } \break
+      \transpose c f { \treb-song } \break
       \key g \major
-      \transpose c g' { \treb-song } \break
+      \transpose c g { \treb-song } \break
       \key a \major
-      \transpose c a' { \treb-song } \break
+      \transpose c a { \treb-song } \break
       \key b \major
-      \transpose c b' { \treb-song } \break
-   }
+      \transpose c b { \treb-song } \break
 }
 
 flux = \relative c {
