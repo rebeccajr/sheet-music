@@ -30,6 +30,13 @@ little-glock = \relative c' {
    \tuplet 3/2 { <c  c,>8 b a } g'4 <d, g,> d'
    \tuplet 3/2 { <c  f,>8 b c } <f, a>2
 
+   d8. d8 |
+   g4 <d g,> d' <d, b> |
+   \tuplet 3/2 { <c' c,>8 b a } g'4 <d, g,> d'
+   \tuplet 3/2 { <c  c,>8 b a } g'4 <d, g,> d'
+   \tuplet 3/2 { <c  f,>8 b c } <f, a>2
+
+
 }
 
 
